@@ -1,0 +1,39 @@
+syntax = "proto3";
+import "google/protobuf/descriptor.proto";
+package golang.example.policy;
+extend google.protobuf.FieldOptions {
+  bool non_sensitive = 50000;
+}
+
+
+option go_package = "/forex";
+
+
+
+// https://polygon.io/sockets for forex
+message PolygonForexQuote
+{
+    string EventType = 1      [json_name="ev"];
+    string CurrencyPair = 2   [json_name="p"];
+    string FXExchangeId = 3   [json_name="x"];
+    double AskPrice = 4       [json_name="a"];
+    double BidPrice = 5       [json_name="b"];
+    int64 QuoteTimestamp = 6  [json_name="t"];
+};
+
+message PolygonForexAggregate
+{
+  string EventType = 1          [json_name="ev"];
+  string CurrencyPair = 2       [json_name="pair"];
+  double OpenPrice = 3          [json_name="o"];
+  double ClosePrice = 4         [json_name="c"];
+  double HighPrice = 5          [json_name="h"];
+  double LowPrice = 6           [json_name="l"];
+  int64 Volume = 7              [json_name="v"];
+  int64 TickStartTimestamp = 8  [json_name="s"];
+};
+
+
+
+
+
