@@ -11,8 +11,9 @@ type ForexFactory struct {
 	apiKey string
 }
 
-func (self *ForexFactory) Create(name string, cancelCtx context.Context, cancelFunc context.CancelFunc, logger fx.ILogger) commsImpl.IConnectionReactor {
-	result := newForex(logger, cancelCtx, cancelFunc, name, self.apiKey)
+func (self *ForexFactory) Create(name string, cancelCtx context.Context, cancelFunc context.CancelFunc, logger fx.ILogger,
+	userContext interface{}) commsImpl.IConnectionReactor {
+	result := newForex(logger, cancelCtx, cancelFunc, name, self.apiKey, userContext)
 	return result
 }
 

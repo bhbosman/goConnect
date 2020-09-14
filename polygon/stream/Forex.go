@@ -119,13 +119,14 @@ func newForex(
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
 	name string,
-	apiKey string) *Forex {
+	apiKey string,
+	userContext interface{}) *Forex {
 	result := &Forex{
 		PolygonConnectionReactor: NewPolygonConnectionReactor(logger,
 			name,
 			cancelCtx,
 			cancelFunc,
-			apiKey),
+			apiKey, userContext),
 		Status:        "",
 		messageRouter: messageRouter.NewMessageRouter(),
 	}

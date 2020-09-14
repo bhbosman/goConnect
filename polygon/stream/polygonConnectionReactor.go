@@ -16,9 +16,10 @@ func NewPolygonConnectionReactor(
 	name string,
 	cancelCtx context.Context,
 	cancelFunc context.CancelFunc,
-	apiKey string) PolygonConnectionReactor {
+	apiKey string,
+	userContext interface{}) PolygonConnectionReactor {
 	return PolygonConnectionReactor{
-		BaseConnectionReactor: commsImpl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc),
+		BaseConnectionReactor: commsImpl.NewBaseConnectionReactor(logger, name, cancelCtx, cancelFunc, userContext),
 		ApiKey:                apiKey,
 	}
 }
